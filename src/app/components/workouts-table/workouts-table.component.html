@@ -1,16 +1,18 @@
-<main>
-  <mat-form-field class="example-full-width">
-    <mat-label>Search</mat-label>
-    <input [(ngModel)]="username" matInput placeholder="John">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>All</mat-label>
-    <mat-select [formControl]="workout" (ngModelChange)="onChange()" multiple>
-      @for (workout of staticWorkouts; track workout) {
-      <mat-option [value]="workout">{{workout}}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+<section class="py-8">
+  <div class="flex gap-4">
+    <mat-form-field class="w-full">
+      <mat-label>Search</mat-label>
+      <input [(ngModel)]="username" matInput placeholder="John">
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>All</mat-label>
+      <mat-select [formControl]="workout" (ngModelChange)="onChange()" multiple>
+        @for (workout of staticWorkouts; track workout) {
+        <mat-option [value]="workout">{{workout}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
   <table mat-table
     [dataSource]="modifyUserData().slice(this.currentPage * this.pageSize, this.currentPage * this.pageSize + this.pageSize)"
     class="mat-elevation-z8">
@@ -38,7 +40,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <mat-paginator [length]="modifyUserData().length" [pageSize]="pageSize" (page)="handlePageEvent($event)"
-    [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
-  </mat-paginator>
-</main>
+</section>
+
+<mat-paginator [length]="modifyUserData().length" [pageSize]="pageSize" (page)="handlePageEvent($event)"
+  [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+</mat-paginator>

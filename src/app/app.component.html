@@ -1,4 +1,4 @@
-<main>
+<main class="h-full mx-40 py-4">
   <app-add-workout (new_workout)="addWorkout($event)"></app-add-workout>
-  <app-workouts-table [workouts]="workouts"></app-workouts-table>
+  <app-workouts-table class="flex flex-col h-[600px] justify-between" [workouts]="workouts"></app-workouts-table>
 </main>
