@@ -1,25 +1,21 @@
-<section class="flex flex-col gap-2">
-    <label class="form-control w-full max-w-xs">
-        <div class="label">
-            <span class="label-text">User Name*</span>
-        </div>
-        <input [(ngModel)]="userName" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-    </label>
-    <label class="form-control w-full max-w-xs">
-        <div class="label">
-            <span class="label-text">Pick the best fantasy franchise</span>
-        </div>
-        <select class="select select-bordered">
-            <option disabled selected>Pick one</option>
-            <option>Star Wars</option>
-            <option>Star Trek</option>
-        </select>
-    </label>
-    <label class="form-control w-full max-w-xs">
-        <div class="label">
-            <span class="label-text">User Name*</span>
-        </div>
-        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-    </label>
+<section>
+  <section>
+    <mat-form-field>
+      <mat-label>User Name*</mat-label>
+      <input [(ngModel)]="username" matInput placeholder="Ex. Pizza">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Workout Type*</mat-label>
+      <mat-select [(ngModel)]="workout">
+        @for (workout of workouts; track workout) {
+        <mat-option [value]="workout">{{workout}}</mat-option>
+      }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Workout Minutes*</mat-label>
+      <input [(ngModel)]="minutes" type="number" matInput placeholder="Ex. Pizza">
+    </mat-form-field>
+  </section>
+  <button (click)="onSave()" mat-raised-button>Add Workout</button>
 </section>
-<button class="btn btn-accent">Accent</button>

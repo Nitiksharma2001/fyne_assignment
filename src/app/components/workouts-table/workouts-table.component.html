@@ -1,0 +1,41 @@
+<main>
+  <mat-form-field class="example-full-width">
+    <mat-label>Search</mat-label>
+    <input matInput placeholder="John">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>All</mat-label>
+    <mat-select [formControl]="toppings" (ngModelChange)="onChange()" multiple>
+      @for (topping of toppingList; track topping) {
+      <mat-option [value]="topping">{{topping}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="workouts">
+      <th mat-header-cell *matHeaderCellDef> Workouts </th>
+      <td mat-cell *matCellDef="let element">{{getAllWorkouts(element)}} </td>
+
+    </ng-container>
+
+    <ng-container matColumnDef="number_of_workouts">
+      <th mat-header-cell *matHeaderCellDef> Number of Workouts </th>
+      <td mat-cell *matCellDef="let element"> {{element.workouts.length}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total_workout_minutes">
+      <th mat-header-cell *matHeaderCellDef> Total Workout Minutes </th>
+      <td mat-cell *matCellDef="let element"> {{getTotalWorkoutMinutes(element)}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+  </mat-paginator>
+</main>
