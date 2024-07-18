@@ -2,19 +2,19 @@
   <section>
     <mat-form-field>
       <mat-label>User Name*</mat-label>
-      <input [(ngModel)]="username" matInput placeholder="Ex. Pizza">
+      <input [(ngModel)]="username" matInput placeholder="John">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Workout Type*</mat-label>
       <mat-select [(ngModel)]="workout">
         @for (workout of workouts; track workout) {
         <mat-option [value]="workout">{{workout}}</mat-option>
-      }
+        }
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Workout Minutes*</mat-label>
-      <input [(ngModel)]="minutes" type="number" matInput placeholder="Ex. Pizza">
+      <input [(ngModel)]="minutes" type="number" matInput placeholder="0">
     </mat-form-field>
   </section>
   <button (click)="onSave()" mat-raised-button>Add Workout</button>
