@@ -15,24 +15,6 @@ interface workoutType {
   type: string;
   minutes: number;
 }
-const userData: UserDataType[] = [
-  {
-    id: 1,
-    username: 'John Doe',
-    workouts: [
-      { type: 'Running', minutes: 30 },
-      { type: 'Cycling', minutes: 45 },
-    ],
-  },
-  {
-    id: 2,
-    username: 'Jane Smith',
-    workouts: [
-      { type: 'Swimming', minutes: 60 },
-      { type: 'Running', minutes: 20 },
-    ],
-  },
-];
 
 @Component({
   selector: 'app-workouts-table',
@@ -53,11 +35,7 @@ export class WorkoutsTableComponent {
 
   workout = new FormControl<string[]>([]);
   staticWorkouts: string[] = ['Cycling', 'Swimming', 'Yoga'];
-  dataSource: UserDataType[];
 
-  constructor() {
-    this.dataSource = this.modifyUserData();
-  }
   displayedColumns: string[] = [
     'username',
     'workouts',
